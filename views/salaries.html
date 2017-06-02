@@ -1,0 +1,59 @@
+    <!--Section of Data-->
+<div class="row">
+    <div class="col-col-7 col-md-offset-3">
+        <Section ng-controller="salariesCntlr">
+            <div class="container-fluid">
+
+                <form name="salaryCalc" ng-submit="salary()">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="col-sm-4">
+                                <!--<label class="col-sm-12">Employee Number:</label>-->
+                                <label class="col-sm-12">Hourly Rate:</label>
+                                <label class="col-sm-12">Hours worked:</label>
+                                <label class="col-sm-12">Days worked:</label>
+                                <hr />
+                                <label class="col-sm-12">Gross Income:</label>
+                                <label class="col-sm-12">UIF Contribution:</label>
+                                <label class="col-sm-12">Tax Contribution:</label>
+                                <label class="col-sm-12">Net Income:</label>
+                                
+                            </div>
+
+                            <div class="col-sm-8">
+                                <!--<div class="col-sm-12"><input type="search" ng-model="salary.employeeNo" placeholder="Use '001'"></div>-->
+                                <div class="col-sm-12"><input type="number" ng-model="rate" placeholder="Employee Rate"></div>
+                                <div class="col-sm-12"><input type="number" ng-model="hours" placeholder="Hours worked"></div>
+                                <div class="col-sm-12"><input type="number" ng-model="days" placeholder="Days worked"></div>
+                                <div class="col-sm-12"><label>{{ gross | currency: "R" : 0 }}</label></div>
+                                <div class="col-sm-12"><label>{{ uif | currency: "R" }}</label></div>
+                                <div class="col-sm-12"><label>{{ tax | currency: "R"}}</label></div>
+                                <div class="col-sm-12"><label>{{ net | currency: "R"}}</label></div>
+                                <div class="col-sm-12"><input value="Capture Salary" class="col-sm-4 btn btn-primary" type="submit"/></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+
+        </Section>
+
+
+       
+
+    </div>
+</div>
+
+<section>
+    <div class="backbtn row">
+        <div class="col-md-12">
+            <a class="btn btn-default" role="button" href="javascript:window.history.go(-1)">Go home</a>
+            <a class="btn btn-default" role="button" href="javascript:window.history.go(0)">Go back <<</a>
+        </div>
+    </div>
+</section>
+   

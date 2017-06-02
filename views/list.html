@@ -1,0 +1,51 @@
+<div ng-controller="detailsCntlr">
+    <!--Section of Data-->
+    <Section>
+        <div class="container-fluid">
+
+
+            <div class="row">
+
+                <!-- Title -->
+                <div class="col-md-12" style="text-transform:uppercase;">
+                    <div class="col-md-2">Emp NO</div>
+                    <div class="col-md-2">Full Name</div>
+                    <div class="col-md-2">Position</div>
+                    <div class="col-md-2">Department</div>
+                    <div class="col-md-2">Hourly Rate</div>
+                    <div class="col-md-2">Net Salary</div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="col-sm-2">{{ employeeNo }}</div>
+                    <div class="col-sm-2">{{ firstName }} {{ surname }}</div>
+                    <div class="col-sm-2">{{ position }}</div>
+                    <div class="col-sm-2">{{ department }}</div>
+                    <div class="col-sm-2">{{ rate }}</div>
+                    <div class="col-sm-2">{{ net }}</div>
+                </div>
+               
+
+
+            </div>
+
+
+
+        </div>
+
+    </Section>
+    <!--/Section of Data/-->
+    <!--Section of Data-->
+    <section>
+        <div class="row col-md-12">&nbsp;</div>
+        <div class="backbtn row">
+            <div class="col-md-12">
+                <a class="btn btn-default" role="button" href="javascript:window.history.go(-1)">Go home</a>
+                <a class="btn btn-default" role="button" href="javascript:window.history.go(0)">Go back <<</a>
+            </div>
+        </div>
+    </section>
+</div>
+        
+
+
