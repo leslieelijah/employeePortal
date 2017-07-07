@@ -1,5 +1,0 @@
-C:\Users\LMahasha\Documents\Visual Studio 2015\Projects\employeePortal\obj\Debug\employeePortal.njsprojResolveAssemblyReference.cache
-C:\Users\LMahasha\Documents\Projects\employeePortal\obj\Debug\employeePortal.njsprojResolveAssemblyReference.cache
-C:\Users\LMahasha\Documents\Projects\employeePortal\bin\Microsoft.NodejsTools.WebRole.dll
-C:\Repos\employeePortal\obj\Debug\employeePortal.njsprojResolveAssemblyReference.cache
-C:\Repos\employeePortal\bin\Microsoft.NodejsTools.WebRole.dll
