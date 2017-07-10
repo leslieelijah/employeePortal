@@ -10,6 +10,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mysql = require('mysql');
 
 var port = process.env.PORT || 4000;
 
@@ -20,31 +21,33 @@ app.use('/models', express.static(__dirname + '/models'));
 app.engine('html', cons.swig);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
- //app.use('/', router);
+
 //Routes
 app.get('/', function (req, res, next) {
     res.render('index.html');   
 });
 
-
-
-// Connect to MongoDB
-var MongoClient = require("mongodb").MongoClient;
-var url = "mongodb://kolobje:!3mpl0y33@ds051585.mlab.com:51585/employee-portal";
-
-MongoClient.connect(url, function (err, db) {
-    if (err) {
-        throw err
-        console.log("Connected correctly to server" + db);
-    }
-    db.collection('contacts').find().toArray(function (err, result) {
-        if (err) throw err
-
-        Console.log(result);
-    }
-    
+//Mysql connect
+var connection = mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            password: '13$Manyape',
+            database: 'employeePortal'
 });
 
+app.post('/details',{});
+connection.connect((err) => {
+if(err) throw err;
+console.log("Connected to the server!");
+var sqlQuery = "INSERT INTO details(firstName, surname, age, gender, race, province, department, cellNumber, emailAddress, residentialAddress) VALUES ?";
+var values = req.body;
+
+connection.query(sqlQuery,[values], (err,result) => {
+    if(err) throw err;
+    console.log('row added' + result);
+
+});
+});
 
 app.listen(port);
 console.log("The server is running...");
