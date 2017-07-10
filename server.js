@@ -35,19 +35,25 @@ var connection = mysql.createConnection({
             database: 'employeePortal'
 });
 
-app.post('/details',{});
-connection.connect((err) => {
-if(err) throw err;
-console.log("Connected to the server!");
-var sqlQuery = "INSERT INTO details(firstName, surname, age, gender, race, province, department, cellNumber, emailAddress, residentialAddress) VALUES ?";
-var values = req.body;
-
-connection.query(sqlQuery,[values], (err,result) => {
+app.post('/details',(req,res,next)=>{
+    connection.connect((err) => {
     if(err) throw err;
-    console.log('row added' + result);
+    console.log("Connected to the server!");
+    var sqlQuery = "INSERT INTO details(firstName, surname, age, gender, race, province, department, cellNumber, emailAddress, residentialAddress) VALUES ?";
+    var values = req.body;
+    connection.query(sqlQuery,[values], (err,result) => {
+        if(err){
+            console.error(err);
+            return res.send(err);
+        }else{
+            return res.send('Ok');
+        }       
+
+    });
+    });
 
 });
-});
+
 
 app.listen(port);
 console.log("The server is running...");
