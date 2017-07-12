@@ -27,6 +27,7 @@ app.get('/', function (req, res, next) {
     res.render('index.html');   
 });
 
+
 //Mysql connect
 var connection = mysql.createConnection({
             host: 'localhost',
@@ -35,23 +36,24 @@ var connection = mysql.createConnection({
             database: 'employeePortal'
 });
 
-app.post('/details',(req,res,next)=>{
-    connection.connect((err) => {
-    if(err) throw err;
-    console.log("Connected to the server!");
-    var sqlQuery = "INSERT INTO details(firstName, surname, age, gender, race, province, department, cellNumber, emailAddress, residentialAddress) VALUES ?";
-    var values = req.body;
-    connection.query(sqlQuery,[values], (err,result) => {
-        if(err){
-            console.error(err);
-            return res.send(err);
-        }else{
-            return res.send('Ok');
-        }       
+connection.connect();
 
-    });
-    });
+var sqlQuery = "INSERT INTO details(firstName, surname, age, gender, race, province, department, cellNumber, emailAddress, residentialAddress) VALUES ?";
+var result = req.body;
+var values = req.body.firstName + "" + req.body.surname + "" + req.body.age + "" + req.body.gender + "" + req.body.race + "" + req.body.province + "" + req.body.department + "" + req.body.cellNumber + "" + req.body.emailAddress + "" + req.body.residentialAddress;
 
+app.post('/', (req,res) => {
+  
+    connection.query(sqlQuery, [result], (err, result) => {
+        return new Promise((resolve, reject) => {
+            if (err){
+                reject(res.send(err));
+            }else{
+                resolve(res.sendStatus(200));
+            }
+                
+        })
+    });
 });
 
 

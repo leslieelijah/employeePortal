@@ -21,7 +21,7 @@
 
         .controller('detailsCntlr', ['$scope','$http', function ($scope,$http){
 
-                $scope.data = {};
+                $scope.detailsData = {};
 
                 /* Provinces */
                 $scope.provinces = [
@@ -62,29 +62,16 @@
                     { name: "Male" }
                 ];
 
-                $scope.employeeDetails = {
-                    firstName: "John",
-                    surname: "Doe",
-                    age: 23,
-                    gender : "default",
-                    race: "default",
-                    email: "default",
-                    department: "default",
-                    province: "default",
-                    mobile: "default",
-                    address: "default"
-            };
-            
-            $scope.employee = function () {
+                $scope.employee = function () {
 
-                $http({
-                    url: 'http://localhost:1337/#/details.html',
-                    method:'POST',
-                     data: $scope.data
-                }).then((httpResponse) => {                   
-                    console.log('response:' + httpResponse);
-                });
-            }
+                    $http.post('/', $scope.detailsData)
+                        .success(function (data) {
+                            console.log("posted successfully");
+                        })
+                        .error(function (error) {
+                            console.error("error in posting");
+                        })
+                }
     }])
 
     .controller("salariesCntlr", ["$scope", function ($scope) {
