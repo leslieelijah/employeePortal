@@ -5501,7 +5501,7 @@
     <Compile Include="public\lib\jquery\src\wrap.js" />
     <Compile Include="public\lib\underscore\underscore-min.js" />
     <Compile Include="public\lib\underscore\underscore.js" />
-    <Compile Include="public\routes\routes.js" />
+    <Compile Include="public\lib\routes\routes.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
     <Compile Include="bin\www" />
@@ -8284,6 +8284,7 @@
     <Content Include="node_modules\type-is\LICENSE" />
     <Content Include="node_modules\type-is\package.json" />
     <Content Include="node_modules\type-is\README.md" />
+    <Content Include="npm-debug.log" />
     <Content Include="package.json" />
     <Content Include="public\css\style.css" />
     <Content Include="public\css\img\favicon.ico" />
@@ -9964,7 +9965,7 @@
     <Folder Include="public\lib\jquery\src\traversing\var\" />
     <Folder Include="public\lib\jquery\src\var\" />
     <Folder Include="public\lib\underscore\" />
-    <Folder Include="public\routes\" />
+    <Folder Include="public\lib\routes\" />
     <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
     <Folder Include="typings\" />

@@ -35,7 +35,8 @@ var connection = mysql.createConnection({
             password: '13$Manyape',
             database: 'employeePortal'
 });
-app.get('/getEmployees', function (res, req) {
+
+app.get('/getEmployees', function (req, res) {
     connection.connect((err) => {
         if (err) throw err;
         console.log("Connected to the server!");
