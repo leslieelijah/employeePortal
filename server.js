@@ -4,7 +4,7 @@
 var express = require('express');
 var app = express();
 var cons = require('consolidate');
-
+var fs = require('fs');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -36,25 +36,37 @@ var connection = mysql.createConnection({
             database: 'employeePortal'
 });
 
-connection.connect();
-
-var sqlQuery = "INSERT INTO details(firstName, surname, age, gender, race, province, department, cellNumber, emailAddress, residentialAddress) VALUES ?";
-var result = req.body;
-var values = req.body.firstName + "" + req.body.surname + "" + req.body.age + "" + req.body.gender + "" + req.body.race + "" + req.body.province + "" + req.body.department + "" + req.body.cellNumber + "" + req.body.emailAddress + "" + req.body.residentialAddress;
-
-app.post('/', (req,res) => {
-  
-    connection.query(sqlQuery, [result], (err, result) => {
-        return new Promise((resolve, reject) => {
-            if (err){
-                reject(res.send(err));
-            }else{
-                resolve(res.sendStatus(200));
+app.get('/addEmployees', function (req, res) {
+    res.sendStatus(data);
+});
+/*
+app.post('/addEmployee', (req, res) => {
+    var content;
+    fs.readFile("/details", function (err, data) {
+        if (err){
+            throw err;
             }
-                
-        })
+        content = data;
+        connection.connect((err) => {
+            if (err) throw err;
+            console.log("Connected to the server!");
+            var sqlQuery = "INSERT INTO details(firstName, surname, age, gender, race, province, department, cellNumber, emailAddress, residentialAddress) VALUES ?";
+            var values = req.body.content;
+            console.log(values);
+            connection.query(sqlQuery, [values], (err, result) => {
+                return new Promise((resolve, reject) => {
+                    if (err) {
+                        reject(res.send(err));
+                    } else {
+                        resolve(res.sendStatus(200));
+                    }
+
+                })
+            });
+        });
     });
 });
+*/
 
 
 app.listen(port);

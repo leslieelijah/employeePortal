@@ -5,6 +5,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>employeePortal</Name>
     <RootNamespace>employeePortal</RootNamespace>
+    <NameOfLastUsedPublishProfile>employeePortal</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -5353,6 +5354,9 @@
     <Compile Include="node_modules\swig\node_modules\uglify-js\node_modules\yargs\node_modules\wordwrap\test\wrap.js" />
     <Compile Include="node_modules\swig\node_modules\uglify-js\tools\node.js" />
     <Compile Include="node_modules\type-is\index.js" />
+    <Compile Include="public\css\img\js\salaryApp.js" />
+    <Compile Include="public\js\angular-route.js" />
+    <Compile Include="public\js\angular-route.min.js" />
     <Compile Include="public\js\salaryApp.js" />
     <Compile Include="public\lib\angular-bootstrap\index.js" />
     <Compile Include="public\lib\angular-bootstrap\ui-bootstrap-tpls.js" />
@@ -5628,6 +5632,7 @@
     <Content Include="bower_components\underscore\LICENSE" />
     <Content Include="bower_components\underscore\README.md" />
     <Content Include="bower_components\underscore\underscore-min.map" />
+    <None Include="employeePortal.pubxml" />
     <Content Include="models\npm-debug.log" />
     <Content Include="node_modules\.bin\bower" />
     <Content Include="node_modules\.bin\bower.cmd" />
@@ -8281,7 +8286,12 @@
     <Content Include="node_modules\type-is\README.md" />
     <Content Include="package.json" />
     <Content Include="public\css\style.css" />
+    <Content Include="public\css\img\favicon.ico" />
+    <Content Include="public\css\img\mmmEmployeeLogo.png" />
     <Content Include="public\img\favicon.ico" />
+    <Content Include="public\img\idealogy.jpg" />
+    <Content Include="public\img\mEmployeeLogo.png" />
+    <Content Include="public\img\mEmployeeLogo2.png" />
     <Content Include="public\img\mmmEmployeeLogo.png" />
     <Content Include="public\json\emp-db.json" />
     <Content Include="public\json\emp-db.txt" />
@@ -8289,6 +8299,7 @@
     <Content Include="public\json\passwords.txt" />
     <Content Include="public\json\provinces.json" />
     <Content Include="public\json\userDynamo.txt" />
+    <Content Include="public\js\angular-route.min.js.map" />
     <Content Include="public\lib\angular-bootstrap\.bower.json" />
     <Content Include="public\lib\angular-bootstrap\.gitignore" />
     <Content Include="public\lib\angular-bootstrap\.npmignore" />
@@ -9907,8 +9918,10 @@
     <Folder Include="node_modules\type-is\" />
     <Folder Include="public\" />
     <Folder Include="public\css\" />
+    <Folder Include="public\css\img\" />
     <Folder Include="public\img\" />
     <Folder Include="public\json\" />
+    <Folder Include="public\css\img\js\" />
     <Folder Include="public\js\" />
     <Folder Include="public\lib\" />
     <Folder Include="public\lib\angular-bootstrap\" />
