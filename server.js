@@ -35,10 +35,48 @@ var connection = mysql.createConnection({
             password: '13$Manyape',
             database: 'employeePortal'
 });
+app.get('/getEmployees', function (res, req) {
+    connection.connect((err) => {
+        if (err) throw err;
+        console.log("Connected to the server!");
+        var sqlQuery = "SELECT * FROM employeeportal.details";
 
-app.get('/addEmployees', function (req, res) {
-    res.sendStatus(data);
+        connection.query(sqlQuery, (err, result) => {
+            return new Promise((resolve, reject) => {
+                if (err) {
+                    reject(res.send(err));
+                } else {
+                    resolve(res.send(result));
+                    console.log(result);
+                }
+
+            })
+        });
+    });
 });
+
+
+
+app.post('/addEmployees', function (req, res) {
+    connection.connect((err) => {
+        if (err) throw err;
+        console.log("Connected to the server!");
+        var sqlQuery = "INSERT INTO details(firstName, surname, age, gender, race, province, department, cellNumber, emailAddress, residentialAddress) VALUES ?";
+        var values = req.body;
+        console.log(values);
+        connection.query(sqlQuery, [values], (err, result) => {
+            return new Promise((resolve, reject) => {
+                if (err) {
+                    reject(res.send(err));
+                } else {
+                    resolve(res.sendStatus(200));
+                }
+
+            })
+        });
+    });
+});
+
 /*
 app.post('/addEmployee', (req, res) => {
     var content;
@@ -47,27 +85,10 @@ app.post('/addEmployee', (req, res) => {
             throw err;
             }
         content = data;
-        connection.connect((err) => {
-            if (err) throw err;
-            console.log("Connected to the server!");
-            var sqlQuery = "INSERT INTO details(firstName, surname, age, gender, race, province, department, cellNumber, emailAddress, residentialAddress) VALUES ?";
-            var values = req.body.content;
-            console.log(values);
-            connection.query(sqlQuery, [values], (err, result) => {
-                return new Promise((resolve, reject) => {
-                    if (err) {
-                        reject(res.send(err));
-                    } else {
-                        resolve(res.sendStatus(200));
-                    }
-
-                })
-            });
-        });
+        
     });
 });
 */
-
 
 app.listen(port);
 console.log("The server is running...");

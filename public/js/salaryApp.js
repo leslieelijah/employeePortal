@@ -64,7 +64,7 @@
 
                 $scope.employee = function () {
 
-                    $http.post(':4000/addEmployee', $scope.detailsData)
+                    $http.post(':4000/addEmployees', $scope.detailsData)
                         .success(function (data) {
                             console.log("posted successfully");
                         })
