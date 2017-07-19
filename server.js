@@ -1,6 +1,7 @@
 'use strict';
 
 //Start the express
+var http = require('http');
 var express = require('express');
 var app = express();
 var cons = require('consolidate');
@@ -11,11 +12,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
+var json = require('express-json');
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(json());
 
 var port = process.env.PORT || 4000;
 
-app.use('/assets', express.static(__dirname + '/public'));
-app.use('/models', express.static(__dirname + '/models'));
+app.use('assets', express.static(__dirname + '/public'));
 
 //set .html as the default extension 
 app.engine('html', cons.swig);
@@ -36,60 +42,57 @@ var connection = mysql.createConnection({
             database: 'employeePortal'
 });
 
-app.get('/getEmployees', function (req, res) {
-    connection.connect((err) => {
-        if (err) throw err;
-        console.log("Connected to the server!");
-        var sqlQuery = "SELECT * FROM employeeportal.details";
+connection.connect((err) => {
+    return new Promise((resolve, reject) => {
+        if (!err)
+            resolve("Connected to MySQL DB!")
+        elsle
+            reject(err)
+    })
+})
 
-        connection.query(sqlQuery, (err, result) => {
-            return new Promise((resolve, reject) => {
-                if (err) {
-                    reject(res.send(err));
-                } else {
-                    resolve(res.send(result));
-                    console.log(result);
-                }
-
-            })
-        });
-    });
-});
-
-
-
-app.post('/addEmployees', function (req, res) {
-    connection.connect((err) => {
-        if (err) throw err;
-        console.log("Connected to the server!");
-        var sqlQuery = "INSERT INTO details(firstName, surname, age, gender, race, province, department, cellNumber, emailAddress, residentialAddress) VALUES ?";
-        var values = req.body;
-        console.log(values);
-        connection.query(sqlQuery, [values], (err, result) => {
-            return new Promise((resolve, reject) => {
-                if (err) {
-                    reject(res.send(err));
-                } else {
-                    resolve(res.sendStatus(200));
-                }
-
-            })
-        });
-    });
-});
-
-/*
-app.post('/addEmployee', (req, res) => {
-    var content;
-    fs.readFile("/details", function (err, data) {
-        if (err){
+//Get all Employess API
+app.get('/api/getEmployee', function (req, res) {
+    connection.query('select * from employeeportal.details', function (err, results, fields) {
+        if (err) {
             throw err;
-            }
-        content = data;
-        
-    });
-});
-*/
+        }else {
+            res.end(JSON.stringify(results));
+            console.log(results);
+        }
+    })
 
-app.listen(port);
+});
+
+//Post Employees to MySQL
+app.post('/api/addEmployee', function (req, res, next) {
+
+    var input = JSON.parse(JSON.stringify(req.body));
+
+    var xy = {
+        firstName: input.firstName,
+        surname: input.surname,
+        age: input.age,
+        gender: input.gender,
+        race: input.race,
+        province: input.province,
+        department: input.department,
+        cellNumber: input.cellNumber,
+        emailAddress: input.emailAddress,
+        residentialAddress: input.residentialAddress
+    };
+
+    connection.query("INSERT INTO employeeportal.details SET ? ", xy, function (error, rows) {
+        if (error) {
+            throw error;
+        }
+        else {
+            res.end(JSON.stringify(rows));
+        }
+    });
+
+});
+
+var server = http.createServer(app);
+server.listen(port);
 console.log("The server is running...");

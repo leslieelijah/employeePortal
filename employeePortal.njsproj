@@ -22,7 +22,7 @@
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
     <ProjectView>ShowAllFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
-    <StartWebBrowser>true</StartWebBrowser>
+    <StartWebBrowser>True</StartWebBrowser>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,7 +31,6 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="app.js" />
     <Compile Include="bower_components\bootstrap\dist\js\bootstrap.js" />
     <Compile Include="bower_components\bootstrap\dist\js\bootstrap.min.js" />
     <Compile Include="bower_components\bootstrap\dist\js\npm.js" />
@@ -164,6 +163,7 @@
     <Compile Include="bower_components\jquery\src\wrap.js" />
     <Compile Include="bower_components\underscore\underscore-min.js" />
     <Compile Include="bower_components\underscore\underscore.js" />
+    <Compile Include="app.js" />
     <Compile Include="controllers\employeeCntlr.js" />
     <Compile Include="controllers\index.js" />
     <Compile Include="data\database.js" />
@@ -5633,6 +5633,7 @@
     <Content Include="bower_components\underscore\README.md" />
     <Content Include="bower_components\underscore\underscore-min.map" />
     <None Include="employeePortal.pubxml" />
+    <Content Include="employeePortal.pubxml.user" />
     <Content Include="models\npm-debug.log" />
     <Content Include="node_modules\.bin\bower" />
     <Content Include="node_modules\.bin\bower.cmd" />
@@ -8284,7 +8285,6 @@
     <Content Include="node_modules\type-is\LICENSE" />
     <Content Include="node_modules\type-is\package.json" />
     <Content Include="node_modules\type-is\README.md" />
-    <Content Include="npm-debug.log" />
     <Content Include="package.json" />
     <Content Include="public\css\style.css" />
     <Content Include="public\css\img\favicon.ico" />

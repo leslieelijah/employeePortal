@@ -11,7 +11,7 @@
     //mongoose.connect(url);
 
 
-    var salaryApp = angular.module('employeeApp', ['ngRoute'])
+    var app = angular.module("employeeApp", ['ngRoute'])
 
         .controller('employeeCntlr', ['$scope', function ($scope) {
 
@@ -19,62 +19,63 @@
 
         }])
 
-        .controller('detailsCntlr', ['$scope','$http', function ($scope,$http){
+        .controller('detailsCntlr', ['$scope','$windows', '$http',  function($scope, $windows, $http) {
 
-                $scope.detailsData = {};
+            $scope.detailsData = {};
+            $scope.detailsData.provinces = [
+                { "name": "Gauteng" },
+                { "name": "Limpopo" },
+                { "name": "Northern Cape" },
+                { "name": "Eastern Cape" },
+                { "name": "Mpumalanga" },
+                { "name": "Western Cape" },
+                { "name": "North West" },
+                { "name": "Free State" }
+            ];
 
-                /* Provinces */
-                $scope.provinces = [
-                    { name: "Gauteng" },
-                    { name: "Limpopo" },
-                    { name: "Northern Cape" },
-                    { name: "Eastern Cape"},
-                    { name: "Mpumalanga"},
-                    { name: "Western Cape"},
-                    { name: "North West"},
-                    { name: "Free State"}
-                ];
+            $scope.detailsData.departments = [
+                { name: "Human Resources" },
+                { name: "Administration" },
+                { name: "Finance" },
+                { name: "Business and Strategy" },
+                { name: "Software Development" },
+                { name: "Packages" },
+                { name: "Security Services" }
+            ];
 
-                /* Department */
-                $scope.departments = [
-                    {name:"Human Resources"},
-                    {name: "Administration"},
-                    {name: "Finance"},
-                    {name: "Business and Strategy"},
-                    {name: "Software Development"},
-                    {name: "Packages"},
-                    {name: "Security Services"}
-                ];
+            $scope.detailsData.races = [
+                { "name": "African" },
+                { "name": "Indian" },
+                { "name": "American" },
+                { "name": "Coloured" },
+                { "name": "Asian" },
+                { "name": "Other" }
+            ];
 
-                /* Races */
-                $scope.races = [
-                    {name: "African"},
-                    {name: "Indian"},
-                    {name: "American"},
-                    {name: "Coloured"},
-                    {name: "Asian"},
-                    {name: "Other"}
-                ];
+            $scope.detailsData.genders = [
+                { "name": "Female" },
+                { "name": "Male" }
+            ];
 
-                /* Gender */
-                $scope.genders = [
-                    { name: "Female" },
-                    { name: "Male" }
-                ];
+            $scope.employee = function () {               
 
-                $scope.employee = function () {
+                //Post API to NodeJS
+                $http.post('/api/addEmployeeDetails', $scope.detailsData)
+                    .success(function (data) {
+                        $scope.detailsData = {};
+                        $scope.details = data;
+                        console.log(data);
+                    })
+                    .error(function (data) {
+                        console.log('Error: ' + data);
+                    });
+         
+            }
 
-                    $http.post(':4000/addEmployees', $scope.detailsData)
-                        .success(function (data) {
-                            console.log("posted successfully");
-                        })
-                        .error(function (error) {
-                            console.error("error in posting");
-                        })
-                }
+            console.log($scope.detailsData);
     }])
 
-    .controller("salariesCntlr", ["$scope", function ($scope) {
+    .controller("salariesCntlr", ["$scope", function($scope) {
 
             /** Declare **/
             $scope.rate = 0.00;
@@ -102,33 +103,38 @@
             console.log($scope.salary);
     }])
 
-    .config(function ($routeProvider) {
+    .controller("listCntrl", ["$scope","$http", function($scope,$http){
+
+
+    }])
+
+    .config(['$routeProvider', function($routeProvider){
         $routeProvider
         .when("/", {
             templateUrl: "main.html",
             title: "Employee Portal"
-        })
+            })
+         .when("/login", {
+                templateUrl: "login.html",
+                controller: "loginCntlr",
+                title: "Employee Portal: List"
+            })
         .when("/details", {
             templateUrl: "details.html",
+            controller: "detailsCntlr",
             title: "Employee Portal: Details"
         })
         .when("/salaries", {
             templateUrl: "salaries.html",
+            controller: "salariesCntlr",
             title: "Employee Portal: Salary"
         })
         .when("/list", {
             templateUrl: "list.html",
+            controller: "listCntrl",
             title: "Employee Portal: Employee List"
         })    
-            .otherwise({ redirectTo: "/" });
-    });
+        .otherwise({ redirectTo: "/" });
+    }]);
 
 })(window.angular);
-    
-
-
-
-
-
-
-

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="employeeApp">
 <head>
-    <title>Employee Portal</title>
+    <title>Employee App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
    	<link rel="icon" href="/img/favicon.ico">
@@ -25,10 +25,10 @@
                      <div class="col-md-8">
                          <nav class="col-md-12 pull-right">
                              <ul class="list-inline text-right" style="padding-top:20px;">
-                                 <li><a href="#salaries">Employee Salaries</a></li>
+                                 <li><a href="#login">Login / Register</a></li>
                                  <li><a href="#details">Details</a></li>
                                  <li><a href="#salaries">Salaries</a></li>
-                                 <li><a href="#list">Employee List</a></li>
+                                 <li><a href="#list">Employees</a></li>
                              </ul>
                          </nav>
                      </div>
@@ -49,7 +49,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p class="text-center">
-                            {{currentYear | date: 'yyyy'}}. All rights reserved.
+                           All rights reserved.
                         </p>
                     </div>
                 </div>
@@ -60,15 +60,19 @@
         
     </div>   
    
-    <!-- Scripts -->
+    <!----- 
+    Scripts         
+    ------>
     <script src="/lib/jquery/dist/jquery.min.js"></script>
-    <script src="/lib/underscore/underscore-min.js"></script>
-    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/lib/underscore/underscore.js"></script>
     <script src="/lib/angular/angular.min.js"></script>
     <script src="/lib/angular-route/angular-route.js"></script>
     <script src="/lib/angular-bootstrap/ui-bootstrap.min.js"></script>
     <script src="/js/salaryApp.js"></script><!-- -->
-    <!-- /Scripts/ --> 
+    <!------- 
+    /Scripts/
+    -------> 
 
 </body>
 </html>
