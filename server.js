@@ -9,26 +9,23 @@ var fs = require('fs');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');
+var cors = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var json = require('express-json');
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(json());
-
-var port = process.env.PORT || 4000;
-
-app.use('assets', express.static(__dirname + '/public'));
+app.set('port', process.env.PORT || 4000);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 //set .html as the default extension 
 app.engine('html', cons.swig);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
-//Routes
+//Re-directs all non API to the index page
 app.get('/', function (req, res, next) {
     res.render('index.html');   
 });
@@ -51,7 +48,9 @@ connection.connect((err) => {
     })
 })
 
-//Get all Employess API
+//API
+
+//Get Employees Details
 app.get('/api/getEmployee', function (req, res) {
     connection.query('select * from employeeportal.details', function (err, results, fields) {
         if (err) {
@@ -64,25 +63,25 @@ app.get('/api/getEmployee', function (req, res) {
 
 });
 
-//Post Employees to MySQL
+//Post Employees to Details
 app.post('/api/addEmployee', function (req, res, next) {
 
-    var input = JSON.parse(JSON.stringify(req.body));
-
-    var xy = {
-        firstName: input.firstName,
-        surname: input.surname,
-        age: input.age,
-        gender: input.gender,
-        race: input.race,
-        province: input.province,
-        department: input.department,
-        cellNumber: input.cellNumber,
-        emailAddress: input.emailAddress,
-        residentialAddress: input.residentialAddress
+    var details = {
+        firstName: req.body.firstName,
+        surname: req.body.surname,
+        age: req.body.age,
+        gender: req.body.gender,
+        race: req.body.race,
+        province: req.body.province,
+        department: req.body.department,
+        cellNumber: req.body.cellNumber,
+        emailAddress: req.body.emailAddress,
+        residentialAddress: req.body.residentialAddress
     };
 
-    connection.query("INSERT INTO employeeportal.details SET ? ", xy, function (error, rows) {
+    var sql = "INSERT INTO employeeportal.details(firstName,surname,age,gender,race,province,department,cellNumber,emailAddress,residentialAddress) VALUES (?)";
+
+    connection.query(sql, [details], function (error, rows, fields) {
         if (error) {
             throw error;
         }
@@ -93,6 +92,8 @@ app.post('/api/addEmployee', function (req, res, next) {
 
 });
 
-var server = http.createServer(app);
-server.listen(port);
-console.log("The server is running...");
+//Start the express Server
+http.createServer(app).listen(app.get('port'), function () {
+    console.log('The server is running... ' + app.get('port'));
+});
+

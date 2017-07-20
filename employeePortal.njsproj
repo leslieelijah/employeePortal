@@ -21,7 +21,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
     <ProjectView>ShowAllFiles</ProjectView>
-    <NodejsPort>1337</NodejsPort>
+    <NodejsPort>3000</NodejsPort>
     <StartWebBrowser>True</StartWebBrowser>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -163,9 +163,7 @@
     <Compile Include="bower_components\jquery\src\wrap.js" />
     <Compile Include="bower_components\underscore\underscore-min.js" />
     <Compile Include="bower_components\underscore\underscore.js" />
-    <Compile Include="app.js" />
     <Compile Include="controllers\employeeCntlr.js" />
-    <Compile Include="controllers\index.js" />
     <Compile Include="data\database.js" />
     <Compile Include="data\index.js" />
     <Compile Include="data\seedData.js" />
@@ -5504,7 +5502,6 @@
     <Compile Include="public\lib\routes\routes.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
-    <Compile Include="bin\www" />
     <Compile Include="server.js" />
     <Content Include=".bowerrc" />
     <Content Include="bower_components\bootstrap\.bower.json" />
@@ -8454,11 +8451,10 @@
     <Content Include="views\index.html" />
     <Content Include="views\list.html" />
     <Content Include="views\main.html" />
-    <Content Include="views\print.html" />
+    <Content Include="views\login.html" />
     <Content Include="views\salaries.html" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\" />
     <Folder Include="bower_components\" />
     <Folder Include="bower_components\bootstrap\" />
     <Folder Include="bower_components\bootstrap\dist\" />

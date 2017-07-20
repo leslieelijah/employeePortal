@@ -1,7 +1,7 @@
 
 <!--Section of Data-->
-<div ng-controller="detailsCntlr">
-<Section >
+<!--<div ng-controller="detailsCntlr">-->
+<Section ng-controller="detailsCntlr">
     <div class="container-fluid">
                 
         <div class="row">
@@ -36,7 +36,7 @@
                 </div>
                     <div class="row col-md-12">
                     <label class="col-sm-4">Province</label>
-                    <select class="col-sm-5" ng-model="detailsData.province" pla>
+                    <select class="col-sm-5" ng-model="detailsData.province">
                         <option value="" disabled selected>Select your province</option>
                         <option ng-repeat="province in detailsData.provinces">{{ province.name }}</option>
                     </select>
@@ -63,10 +63,10 @@
                         
                     <!-- Results -->
                 <div class="row col-md-12 text-center">
-                    {{age}}
-                    {{email}}
-                    {{address}}
-                    {{mobile}}
+                    {{detailsData.age}}
+                    {{detailsData.email}}
+                    {{detailsData.address}}
+                    {{detailsData.mobile}}
                 </div>
                 <!-- /Results/ -->
                                        
@@ -91,5 +91,5 @@
         </div>
     </div>
 </section>
-</div>
+<!--</div>-->
 
