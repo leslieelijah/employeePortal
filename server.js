@@ -5,7 +5,8 @@ var http = require('http');
 var express = require('express');
 var app = express();
 var cons = require('consolidate');
-//var path = require('path');
+var fs = require('fs');
+var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cors = require('cookie-parser');
@@ -22,13 +23,7 @@ app.use(cors());
 //set .html as the default extension 
 app.engine('html', cons.swig);
 app.set('view engine', 'html');
-app.set('views', __dirname + '/views');
-
-//Re-directs all non API to the index page
-app.get('/', function (req, res, next) {
-    res.render('index.html');   
-});
-
+app.set('views', __dirname + 'views');
 
 //Mysql connect
 var connection = mysql.createConnection({
@@ -89,6 +84,11 @@ app.post('/api/addEmployee', function (req, res, next) {
         }
     });
 
+});
+
+//Re-directs all non API to the index page
+app.get('/', function (req, res, next) {
+    res.render('index.html');
 });
 
 //Start the express Server
