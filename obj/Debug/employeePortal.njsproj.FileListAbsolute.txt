@@ -1,0 +1,1 @@
+C:\Workspaces\EmployeeSalary\bin\Microsoft.NodejsTools.WebRole.dll

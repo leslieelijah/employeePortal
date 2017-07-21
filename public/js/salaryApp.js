@@ -56,19 +56,34 @@
             };
 
             $scope.employee = function () {               
+                var config = {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                    }
+                }
+                $http.post('http://localhost:4000/api/addEmployee', $scope.detailsData, config)
+                    .success(function (data, status, headers, config) {
+                        $scope.PostDataResponse = data;
+                    })
+                    .error(function (data, status, header, config) {
+                        $scope.ResponseDetails = "Data: " + data +
+                            "<hr />status: " + status +
+                            "<hr />headers: " + header +
+                            "<hr />config: " + config;
+                    });
 
                 //Post API to NodeJS
-                $http.post('http://localhost:4000/api/addEmployee', $scope.detailsData, function (req,res,err) {
-                    return new Promise((resolve, reject) => {
-                        if (!err) {
-                            //$scope.detailsData = {};
-                            res.set("Content-Type", "application/json");                            
-                            resolve(res.send(201, $scope.detailsData));
-                        } else
-                            reject(err + data);
-                    })
+                //$http.post('http://localhost:4000/api/addEmployee', $scope.detailsData, function (req,res,err) {
+                //    return new Promise((resolve, reject) => {
+                //        if (!err) {
+                //            //$scope.detailsData = {};
+                //            res.set("Content-Type", "application/json");                            
+                //            resolve(res.send(201, $scope.detailsData));
+                //        } else
+                //            reject(err + data);
+                //    })
 
-                });         
+                //});         
             }
             
     }])
