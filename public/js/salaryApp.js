@@ -2,15 +2,6 @@
 
 (function () {
 
-    //var mongoose = require('mongooose');
-    //var Schema = mongoose.Schema;
-    //var promise = mongoose.Promise = require('bluebird');
-
-    //var url = "mongodb://kolobje:!3mpl0y33@ds051585.mlab.com:51585/employee-portal";
-
-    //mongoose.connect(url);
-
-
     var app = angular.module("employeeApp", ['ngRoute'])
 
         .controller('employeeCntlr', ['$scope', function ($scope) {

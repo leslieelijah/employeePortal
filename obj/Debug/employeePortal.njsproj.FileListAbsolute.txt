@@ -1,1 +1,2 @@
 C:\Workspaces\EmployeeSalary\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Workspaces\EmployeeSalary\obj\Debug\employeePortal.njsprojResolveAssemblyReference.cache

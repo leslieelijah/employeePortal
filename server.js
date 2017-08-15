@@ -12,9 +12,9 @@ var logger = require('morgan');
 var cors = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
-var json = require('express-json');
 
-app.set('port', process.env.PORT || 4000);
+var port = process.env.PORT || 4000;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -37,7 +37,7 @@ connection.connect((err) => {
     return new Promise((resolve, reject) => {
         if (!err)
             resolve("Connected to MySQL DB!")
-        elsle
+        else
             reject(err)
     })
 })
@@ -47,20 +47,23 @@ connection.connect((err) => {
 //Get Employees Details
 app.get('/api/getEmployee', function (req, res) {
     connection.query('select * from employeeportal.details', function (err, results, fields) {
-        if (err) {
-            throw err;
-        }else {
-            res.end(JSON.stringify(results));
-            console.log(results);
-        }
+        return new Promise((resolve, reject) => {
+            if (err)
+                reject(err)
+            else {
+                resolve(JSON.stringify(res.send(results)));
+                console.log(results)
+            }
+        })
     })
-
 });
 
 //Post Employees to Details
-app.post('/api/addEmployee', function (req, res, next) {
+app.post('/api/addEmployee', function (req, res) {
 
-    var details = {
+    var data = req.body;
+
+    var db = {
         firstName: req.body.firstName,
         surname: req.body.surname,
         age: req.body.age,
@@ -73,17 +76,29 @@ app.post('/api/addEmployee', function (req, res, next) {
         residentialAddress: req.body.residentialAddress
     };
 
-    var sql = "INSERT INTO employeeportal.details(firstName,surname,age,gender,race,province,department,cellNumber,emailAddress,residentialAddress) VALUES (?)";
+    //var employeeDetails = req.body;
 
-    connection.query(sql, [details], function (error, rows, fields) {
-        if (error) {
+    var sql = 'INSERT INTO details(firstName, surname, age, gender, race, province, department, cellNumber, emailAddress, residentialAddress) VALUES (?)';
+
+
+    connection.query(sql, db, function (error, results, fields) {
+
+        //return new Promise((resolve, reject) => {
+        //    if (error)
+        //        reject(error);
+        //    else {
+        //        resolve("Employee details have been added successfully!");
+        //        console.log("Details added: Successfully!" + res.end(JSON.stringify(results)));
+        //    }
+        //})
+
+        if (error)
             throw error;
-        }
         else {
-            res.end(JSON.stringify(rows));
+            res.status(201).send("Success");
         }
+        
     });
-
 });
 
 //Re-directs all non API to the index page
@@ -92,7 +107,8 @@ app.get('/', function (req, res, next) {
 });
 
 //Start the express Server
-http.createServer(app).listen(app.get('port'), function () {
-    console.log('The server is running... ' + app.get('port'));
-});
+//http.createServer(app).listen(app.get('port'), function () {
+//    console.log('The server is running... ' + app.get('port'));
+//});
+app.listen(port);
 

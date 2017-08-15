@@ -13,7 +13,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>d419eab2-aff0-4d4f-9c2b-be4bed6dd14a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>app.js</StartupFile>
+    <StartupFile>./bin/www</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -5580,6 +5580,9 @@
     <Compile Include="routes\users.js" />
     <Compile Include="server.js" />
     <Content Include=".bowerrc" />
+    <Content Include=".gitignore" />
+    <Content Include="bin\Microsoft.NodejsTools.WebRole.dll" />
+    <Content Include="bin\www" />
     <Content Include="bower_components\bootstrap\.bower.json" />
     <Content Include="bower_components\bootstrap\bower.json" />
     <Content Include="bower_components\bootstrap\CHANGELOG.md" />
@@ -5705,8 +5708,6 @@
     <Content Include="bower_components\underscore\LICENSE" />
     <Content Include="bower_components\underscore\README.md" />
     <Content Include="bower_components\underscore\underscore-min.map" />
-    <None Include="employeePortal.pubxml" />
-    <Content Include="employeePortal.pubxml.user" />
     <Content Include="models\npm-debug.log" />
     <Content Include="node_modules\.bin\stylus" />
     <Content Include="node_modules\.bin\stylus.cmd" />
@@ -8557,6 +8558,7 @@
     <Content Include="views\salaries.html" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\" />
     <Folder Include="bower_components\" />
     <Folder Include="bower_components\bootstrap\" />
     <Folder Include="bower_components\bootstrap\dist\" />
