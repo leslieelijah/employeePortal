@@ -83,15 +83,6 @@ app.post('/api/addEmployee', function (req, res) {
 
     connection.query(sql, db, function (error, results, fields) {
 
-        //return new Promise((resolve, reject) => {
-        //    if (error)
-        //        reject(error);
-        //    else {
-        //        resolve("Employee details have been added successfully!");
-        //        console.log("Details added: Successfully!" + res.end(JSON.stringify(results)));
-        //    }
-        //})
-
         if (error)
             throw error;
         else {
