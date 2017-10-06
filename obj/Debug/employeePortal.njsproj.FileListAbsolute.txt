@@ -3,3 +3,6 @@ C:\Users\LMahasha\Documents\Projects\employeePortal\obj\Debug\employeePortal.njs
 C:\Users\LMahasha\Documents\Projects\employeePortal\bin\Microsoft.NodejsTools.WebRole.dll
 C:\Repos\employeePortal\obj\Debug\employeePortal.njsprojResolveAssemblyReference.cache
 C:\Repos\employeePortal\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\leslie.mahasha\Documents\DEV\employeePortal\obj\Debug\employeePortal.njsprojResolveAssemblyReference.cache
+C:\Users\leslie.mahasha\Documents\DEV\employeePortal\obj\Debug\employeePortal.njsproj.CoreCompileInputs.cache
+C:\Users\leslie.mahasha\Documents\DEV\employeePortal\bin\Microsoft.NodejsTools.WebRole.dll
