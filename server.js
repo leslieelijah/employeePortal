@@ -37,7 +37,8 @@ app.set('views', __dirname + '/views');
  //app.use('/', router);
 //Routes
 app.get('/', function (req, res, next) {
-    res.render('index.html');   
+    res.render('index.html');  
+    let abc = ""; 
 });
 
 /*
