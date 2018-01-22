@@ -23,14 +23,14 @@ app.use(cors());
 //set .html as the default extension 
 app.engine('html', cons.swig);
 app.set('view engine', 'html');
-app.set('views', __dirname + 'views');
+app.set('views', __dirname + '/views');
 
 //Mysql connect
 var connection = mysql.createConnection({
             host: 'localhost',
             user: 'root',
-            password: '13$Manyape',
-            database: 'employeePortal'
+            password: '222$Cod1n9',
+            database: 'kolobje'
 });
 
 connection.connect((err) => {
@@ -46,7 +46,7 @@ connection.connect((err) => {
 
 //Get Employees Details
 app.get('/api/getEmployee', function (req, res) {
-    connection.query('select * from employeeportal.details', function (err, results, fields) {
+    connection.query('select * from kolobje.details', function (err, results, fields) {
         return new Promise((resolve, reject) => {
             if (err)
                 reject(err)
@@ -102,4 +102,3 @@ app.get('/', function (req, res, next) {
 //    console.log('The server is running... ' + app.get('port'));
 //});
 app.listen(port);
-

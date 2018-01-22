@@ -124,8 +124,8 @@
             title: "Make Employee App"
             })
          .when("/login", {
-                templateUrl: "login.html",
-                controller: "loginCntlr",
+                templateUrl: "index.html",
+                controller: "employeeCntlr",
                 title: "Employee: List"
             })
         .when("/details", {
