@@ -1,6 +1,6 @@
 'use strict';
 
-//Start the express
+/* Start the express */
 var http = require('http');
 var express = require('express');
 var app = express();
@@ -17,15 +17,15 @@ var port = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(cors());
 
-//set .html as the default extension 
+/* set .html as the default extension */
 app.engine('html', cons.swig);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
-//Mysql connect
+/* Mysql connect */
 var connection = mysql.createConnection({
             host: 'localhost',
             user: 'root',
@@ -42,9 +42,11 @@ connection.connect((err) => {
     })
 })
 
-//API
+/***
+ *API
+***/
 
-//Get Employees Details
+/* Get Employees Details */
 app.get('/api/getEmployee', function (req, res) {
     connection.query('select * from kolobje.details', function (err, results, fields) {
         return new Promise((resolve, reject) => {
@@ -58,7 +60,7 @@ app.get('/api/getEmployee', function (req, res) {
     })
 });
 
-//Post Employees to Details
+/* Post Employees to Details */
 app.post('/api/addEmployee', function (req, res) {
 
     var data = req.body;
@@ -76,10 +78,9 @@ app.post('/api/addEmployee', function (req, res) {
         residentialAddress: req.body.residentialAddress
     };
 
-    //var employeeDetails = req.body;
+    /* var employeeDetails = req.body; */
 
     var sql = 'INSERT INTO details(firstName, surname, age, gender, race, province, department, cellNumber, emailAddress, residentialAddress) VALUES (?)';
-
 
     connection.query(sql, db, function (error, results, fields) {
 
@@ -98,7 +99,7 @@ app.get('/', function (req, res, next) {
 });
 
 //Start the express Server
-//http.createServer(app).listen(app.get('port'), function () {
-//    console.log('The server is running... ' + app.get('port'));
-//});
+http.createServer(app).listen(app.get('port'), function () {    
+    console.log('The server is running... ' + app.get('port'));
+});
 app.listen(port);
