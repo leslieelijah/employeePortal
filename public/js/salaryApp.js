@@ -1,17 +1,8 @@
 "use strict";
 
-(function (angular) {
+(function () {
 
-    //var mongoose = require('mongooose');
-    //var Schema = mongoose.Schema;
-    //var promise = mongoose.Promise = require('bluebird');
-
-    //var url = "mongodb://kolobje:!3mpl0y33@ds051585.mlab.com:51585/employee-portal";
-
-    //mongoose.connect(url);
-
-
-    var salaryApp = angular.module('employeeApp', ['ngRoute'])
+    var app = angular.module("employeeApp", ['ngRoute'])
 
         .controller('employeeCntlr', ['$scope', function ($scope) {
 
@@ -19,62 +10,76 @@
 
         }])
 
-        .controller('detailsCntlr', ['$scope','$http', function ($scope,$http){
+        .controller('detailsCntlr', ['$scope', '$http',  function($scope, $http) {
+            //Select boxes
+            $scope.detailsData = {
+                provinces: [
+                    { "name": "Gauteng" },
+                    { "name": "Limpopo" },
+                    { "name": "Northern Cape" },
+                    { "name": "Eastern Cape" },
+                    { "name": "Mpumalanga" },
+                    { "name": "Western Cape" },
+                    { "name": "North West" },
+                    { "name": "Free State" }
+                ],
+                departments: [
+                    { "name": "Human Resources" },
+                    { "name": "Administration" },
+                    { "name": "Finance" },
+                    { "name": "Business and Strategy" },
+                    { "name": "Software Development" },
+                    { "name": "Packages" },
+                    { "name": "Security Services" }
+                ],
+                races: [
+                    { "name": "African" },
+                    { "name": "Indian" },
+                    { "name": "American" },
+                    { "name": "Coloured" },
+                    { "name": "Asian" },
+                    { "name": "Other" }
+                ],
+                genders: [
+                    { "name": "Female" },
+                    { "name": "Male" }
+                ]
+            };
 
-                $scope.detailsData = {};
-
-                /* Provinces */
-                $scope.provinces = [
-                    { name: "Gauteng" },
-                    { name: "Limpopo" },
-                    { name: "Northern Cape" },
-                    { name: "Eastern Cape"},
-                    { name: "Mpumalanga"},
-                    { name: "Western Cape"},
-                    { name: "North West"},
-                    { name: "Free State"}
-                ];
-
-                /* Department */
-                $scope.departments = [
-                    {name:"Human Resources"},
-                    {name: "Administration"},
-                    {name: "Finance"},
-                    {name: "Business and Strategy"},
-                    {name: "Software Development"},
-                    {name: "Packages"},
-                    {name: "Security Services"}
-                ];
-
-                /* Races */
-                $scope.races = [
-                    {name: "African"},
-                    {name: "Indian"},
-                    {name: "American"},
-                    {name: "Coloured"},
-                    {name: "Asian"},
-                    {name: "Other"}
-                ];
-
-                /* Gender */
-                $scope.genders = [
-                    { name: "Female" },
-                    { name: "Male" }
-                ];
-
-                $scope.employee = function () {
-
-                    $http.post('/', $scope.detailsData)
-                        .success(function (data) {
-                            console.log("posted successfully");
-                        })
-                        .error(function (error) {
-                            console.error("error in posting");
-                        })
+            $scope.employee = function () {               
+                var config = {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                    }
                 }
+                $http.post('http://localhost:4000/api/addEmployee', $scope.detailsData, config)
+                    .success(function (data, status, headers, config) {
+                        $scope.PostDataResponse = data;
+                    })
+                    .error(function (data, status, header, config) {
+                        $scope.ResponseDetails = "Data: " + data +
+                            "<hr />status: " + status +
+                            "<hr />headers: " + header +
+                            "<hr />config: " + config;
+                    });
+
+                //Post API to NodeJS
+                //$http.post('http://localhost:4000/api/addEmployee', $scope.detailsData, function (req,res,err) {
+                //    return new Promise((resolve, reject) => {
+                //        if (!err) {
+                //            //$scope.detailsData = {};
+                //            res.set("Content-Type", "application/json");                            
+                //            resolve(res.send(201, $scope.detailsData));
+                //        } else
+                //            reject(err + data);
+                //    })
+
+                //});         
+            }
+            
     }])
 
-    .controller("salariesCntlr", ["$scope", function ($scope) {
+    .controller("salariesCntlr", ["$scope", function($scope) {
 
             /** Declare **/
             $scope.rate = 0.00;
@@ -102,33 +107,43 @@
             console.log($scope.salary);
     }])
 
-    .config(function ($routeProvider) {
+    .controller("listCntrl", ["$scope","$http", function($scope,$http){
+
+
+    }])
+
+    .controller("registerCntrl", ["$scope", "$http", function ($scope, $http) {
+
+
+    }])
+
+    .config(['$routeProvider', function($routeProvider){
         $routeProvider
         .when("/", {
             templateUrl: "main.html",
-            title: "Employee Portal"
-        })
+            title: "Make Employee App"
+            })
+         .when("/login", {
+                templateUrl: "index.html",
+                controller: "employeeCntlr",
+                title: "Employee: List"
+            })
         .when("/details", {
             templateUrl: "details.html",
-            title: "Employee Portal: Details"
+            controller: "detailsCntlr",
+            title: "Employee: Details"
         })
         .when("/salaries", {
             templateUrl: "salaries.html",
-            title: "Employee Portal: Salary"
+            controller: "salariesCntlr",
+            title: "Employee: Salary"
         })
         .when("/list", {
             templateUrl: "list.html",
-            title: "Employee Portal: Employee List"
+            controller: "listCntrl",
+            title: "Employee: Employee List"
         })    
-            .otherwise({ redirectTo: "/" });
-    });
+        .otherwise({ redirectTo: "/" });
+    }]);
 
 })(window.angular);
-    
-
-
-
-
-
-
-

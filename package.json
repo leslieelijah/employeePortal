@@ -19,6 +19,8 @@
     "mongo": "^0.1.0",
     "mongodb": "^2.2.29",
     "morgan": "~1.3.0",
+    "mysql": "^2.15.0",
+    "node": "^9.11.0",
     "routes": "^2.1.0",
     "serve-favicon": "~2.1.3",
     "stylus": "0.42.3",
