@@ -1,9 +1,10 @@
-﻿#!/usr/bin/env node
-var debug = require('debug')('employeePortal');
-var app = require('../app');
+#!/usr/bin/env node  
+var express =  require('express');
+var debug = require('debug');  
+var app = require('../server');  
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT);  
 
 var server = app.listen(app.get('port'), function() {
-    debug('Express server listening on port ' + server.address().port);
-});
+  debug('Express server listening on port ' + server.address().port);  
+}); 

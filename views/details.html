@@ -1,12 +1,12 @@
 
 <!--Section of Data-->
-<div ng-controller="detailsCntlr">
-<Section >
+<!--<div ng-controller="detailsCntlr">-->
+<Section ng-controller="detailsCntlr">
     <div class="container-fluid">
                 
         <div class="row">
 
-            <form ng-submit="employee()" role="form" class="form-inline col-md-7 col-md-offset-3"> 
+            <form role="form" class="form-inline col-md-7 col-md-offset-3"> 
                                           
                 <h4 class="col-md-12">Personal Details</h4>
 
@@ -17,39 +17,35 @@
                     <label class="col-sm-4">Surname</label> <input class="col-sm-5" type="text" ng-model="detailsData.surname" placeholder="Enter your surname">
                 </div>
                 <div class="row col-md-12">
-                    <label class="col-sm-4">Age</label> <input class="col-sm-5" type="text" ng-model="detailsData.age" placeholder="Age">
+                    <label class="col-sm-4">Age</label> <input class="col-sm-5" type="number" ng-model="detailsData.age" placeholder="Age">
                 </div>
 
                 <div class="row col-md-12">
                     <label class="col-sm-4">Gender</label>
                     <select class="col-sm-5" ng-model="detailsData.gender">
-                        <option selected value="Select a Gender">Select your gender</option>
-                        <option ng-repeat="gender in genders">{{ gender.name }}</option>
+                        <option value="" disabled selected>Select your gender</option>
+                        <option ng-repeat="gender in detailsData.genders">{{ gender.name }}</option>
                     </select>
                 </div>
                 <div class="row col-md-12">
                     <label class="col-sm-4">Race</label> 
                     <select class="col-sm-5" ng-model="detailsData.race">
-                        <option selected value="Select a race">Select your race</option>
-                        <option ng-repeat="race in races">{{race.name}}</option>
+                        <option value="" disabled selected>Select your race</option>
+                        <option ng-repeat="race in detailsData.races">{{ race.name }}</option>
                     </select>
                 </div>
                     <div class="row col-md-12">
                     <label class="col-sm-4">Province</label>
                     <select class="col-sm-5" ng-model="detailsData.province">
-                        <option selected value="Select your province">Select your province</option>
-                        <option ng-repeat="province in provinces" >
-                            {{province.name}}
-                        </option>
+                        <option value="" disabled selected>Select your province</option>
+                        <option ng-repeat="province in detailsData.provinces">{{ province.name }}</option>
                     </select>
                 </div>
                 <div class="row col-md-12">
                     <label class="col-sm-4">Department</label> 
                     <select class="col-sm-5" ng-model="detailsData.department">
-                        <option selected value="Select your department">Select your department</option>
-                        <option ng-repeat="department in departments">
-                            {{department.name}}
-                        </option>
+                        <option value="" disabled selected>Select your department</option>
+                        <option ng-repeat="department in detailsData.departments">{{ department.name }}</option>
                     </select>
                 </div>  
                           
@@ -59,7 +55,7 @@
                     <label class="col-sm-4">Cell Number</label> <input class="col-sm-5" type="number" ng-model="detailsData.mobile" placeholder="Enter your Cellnumber">
                 </div>
                 <div class="row col-md-12">
-                    <label class="col-sm-4">E-mail Address</label> <input class="col-sm-5" type="text" ng-model="detailsData.email" placeholder="Enter your email">
+                    <label class="col-sm-4">E-mail Address</label> <input class="col-sm-5" type="email" ng-model="detailsData.email" placeholder="Enter your email">
                 </div>
                 <div class="row col-md-12">
                     <label class="col-sm-4">Address</label> <input class="col-sm-5" type="text" ng-model="detailsData.address" placeholder="Address">
@@ -67,16 +63,16 @@
                         
                     <!-- Results -->
                 <div class="row col-md-12 text-center">
-                    {{age}}
-                    {{email}}
-                    {{address}}
-                    {{mobile}}
+                    {{detailsData.age}}
+                    {{detailsData.email}}
+                    {{detailsData.address}}
+                    {{detailsData.mobile}}
                 </div>
                 <!-- /Results/ -->
                                        
             <div class="row col-md-12">  
                 <label class="col-sm-4">&nbsp;</label> 
-                <input type="submit" class="col-sm-4 btn btn-primary" value="Add Employee" />                        
+                <input type="submit" ng-click="employee()" class="col-sm-4 btn btn-primary" value="Add Employee" />                        
             </div>
         </form> 
         </div>
@@ -95,5 +91,5 @@
         </div>
     </div>
 </section>
-</div>
+<!--</div>-->
 

@@ -5,6 +5,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>employeePortal</Name>
     <RootNamespace>employeePortal</RootNamespace>
+    <NameOfLastUsedPublishProfile>employeePortal</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -12,7 +13,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>d419eab2-aff0-4d4f-9c2b-be4bed6dd14a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>bin\www</StartupFile>
+    <StartupFile>./bin/www</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +22,7 @@
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
     <ProjectView>ShowAllFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
-    <StartWebBrowser>true</StartWebBrowser>
+    <StartWebBrowser>True</StartWebBrowser>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,7 +31,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="app.js" />
+    <Compile Include="app.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="bower_components\bootstrap\dist\js\bootstrap.js" />
     <Compile Include="bower_components\bootstrap\dist\js\bootstrap.min.js" />
     <Compile Include="bower_components\bootstrap\dist\js\npm.js" />
@@ -164,7 +167,6 @@
     <Compile Include="bower_components\underscore\underscore-min.js" />
     <Compile Include="bower_components\underscore\underscore.js" />
     <Compile Include="controllers\employeeCntlr.js" />
-    <Compile Include="controllers\index.js" />
     <Compile Include="data\database.js" />
     <Compile Include="data\index.js" />
     <Compile Include="data\seedData.js" />
@@ -4190,6 +4192,7 @@
     <Compile Include="node_modules\depd\lib\compat\buffer-concat.js" />
     <Compile Include="node_modules\depd\lib\compat\callsite-tostring.js" />
     <Compile Include="node_modules\depd\lib\compat\index.js" />
+    <Compile Include="node_modules\express-json\lib\json.js" />
     <Compile Include="node_modules\express\index.js" />
     <Compile Include="node_modules\express\lib\application.js" />
     <Compile Include="node_modules\express\lib\express.js" />
@@ -4729,6 +4732,78 @@
     <Compile Include="node_modules\morgan\index.js" />
     <Compile Include="node_modules\morgan\node_modules\basic-auth\index.js" />
     <Compile Include="node_modules\ms\index.js" />
+    <Compile Include="node_modules\mysql\index.js" />
+    <Compile Include="node_modules\mysql\lib\Connection.js" />
+    <Compile Include="node_modules\mysql\lib\ConnectionConfig.js" />
+    <Compile Include="node_modules\mysql\lib\Pool.js" />
+    <Compile Include="node_modules\mysql\lib\PoolCluster.js" />
+    <Compile Include="node_modules\mysql\lib\PoolConfig.js" />
+    <Compile Include="node_modules\mysql\lib\PoolConnection.js" />
+    <Compile Include="node_modules\mysql\lib\PoolNamespace.js" />
+    <Compile Include="node_modules\mysql\lib\PoolSelector.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\Auth.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\BufferList.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\constants\charsets.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\constants\client.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\constants\errors.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\constants\field_flags.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\constants\server_status.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\constants\ssl_profiles.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\constants\types.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\PacketHeader.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\ClientAuthenticationPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\ComChangeUserPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\ComPingPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\ComQueryPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\ComQuitPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\ComStatisticsPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\EmptyPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\EofPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\ErrorPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\Field.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\FieldPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\HandshakeInitializationPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\index.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\LocalDataFilePacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\OkPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\OldPasswordPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\ResultSetHeaderPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\RowDataPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\SSLRequestPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\StatisticsPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\packets\UseOldPasswordPacket.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\PacketWriter.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\Parser.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\Protocol.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\ResultSet.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\sequences\ChangeUser.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\sequences\Handshake.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\sequences\index.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\sequences\Ping.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\sequences\Query.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\sequences\Quit.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\sequences\Sequence.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\sequences\Statistics.js" />
+    <Compile Include="node_modules\mysql\lib\protocol\SqlString.js" />
+    <Compile Include="node_modules\mysql\node_modules\bignumber.js\bignumber.js" />
+    <Compile Include="node_modules\mysql\node_modules\bignumber.js\bignumber.min.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\duplex.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\lib\_stream_duplex.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\lib\_stream_passthrough.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\lib\_stream_readable.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\lib\_stream_transform.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\lib\_stream_writable.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\node_modules\core-util-is\lib\util.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\node_modules\core-util-is\test.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\node_modules\isarray\build\build.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\node_modules\isarray\index.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\node_modules\string_decoder\index.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\passthrough.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\readable.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\transform.js" />
+    <Compile Include="node_modules\mysql\node_modules\readable-stream\writable.js" />
+    <Compile Include="node_modules\mysql\node_modules\sqlstring\index.js" />
+    <Compile Include="node_modules\mysql\node_modules\sqlstring\lib\SqlString.js" />
     <Compile Include="node_modules\nodemon\bin\nodemon.js" />
     <Compile Include="node_modules\nodemon\lib\cli\index.js" />
     <Compile Include="node_modules\nodemon\lib\cli\parse.js" />
@@ -5353,6 +5428,9 @@
     <Compile Include="node_modules\swig\node_modules\uglify-js\node_modules\yargs\node_modules\wordwrap\test\wrap.js" />
     <Compile Include="node_modules\swig\node_modules\uglify-js\tools\node.js" />
     <Compile Include="node_modules\type-is\index.js" />
+    <Compile Include="public\css\img\js\salaryApp.js" />
+    <Compile Include="public\js\angular-route.js" />
+    <Compile Include="public\js\angular-route.min.js" />
     <Compile Include="public\js\salaryApp.js" />
     <Compile Include="public\lib\angular-bootstrap\index.js" />
     <Compile Include="public\lib\angular-bootstrap\ui-bootstrap-tpls.js" />
@@ -5497,12 +5575,14 @@
     <Compile Include="public\lib\jquery\src\wrap.js" />
     <Compile Include="public\lib\underscore\underscore-min.js" />
     <Compile Include="public\lib\underscore\underscore.js" />
-    <Compile Include="public\routes\routes.js" />
+    <Compile Include="public\lib\routes\routes.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
-    <Compile Include="bin\www" />
     <Compile Include="server.js" />
     <Content Include=".bowerrc" />
+    <Content Include=".gitignore" />
+    <Content Include="bin\Microsoft.NodejsTools.WebRole.dll" />
+    <Content Include="bin\www" />
     <Content Include="bower_components\bootstrap\.bower.json" />
     <Content Include="bower_components\bootstrap\bower.json" />
     <Content Include="bower_components\bootstrap\CHANGELOG.md" />
@@ -5629,12 +5709,6 @@
     <Content Include="bower_components\underscore\README.md" />
     <Content Include="bower_components\underscore\underscore-min.map" />
     <Content Include="models\npm-debug.log" />
-    <Content Include="node_modules\.bin\bower" />
-    <Content Include="node_modules\.bin\bower.cmd" />
-    <Content Include="node_modules\.bin\jade" />
-    <Content Include="node_modules\.bin\jade.cmd" />
-    <Content Include="node_modules\.bin\nodemon" />
-    <Content Include="node_modules\.bin\nodemon.cmd" />
     <Content Include="node_modules\.bin\stylus" />
     <Content Include="node_modules\.bin\stylus.cmd" />
     <Content Include="node_modules\.bin\swig" />
@@ -7154,6 +7228,8 @@
     <Content Include="node_modules\depd\LICENSE" />
     <Content Include="node_modules\depd\package.json" />
     <Content Include="node_modules\depd\Readme.md" />
+    <Content Include="node_modules\express-json\package.json" />
+    <Content Include="node_modules\express-json\README.md" />
     <Content Include="node_modules\express\.npmignore" />
     <Content Include="node_modules\express\History.md" />
     <Content Include="node_modules\express\LICENSE" />
@@ -7639,6 +7715,36 @@
     <Content Include="node_modules\ms\.npmignore" />
     <Content Include="node_modules\ms\package.json" />
     <Content Include="node_modules\ms\README.md" />
+    <Content Include="node_modules\mysql\Changes.md" />
+    <Content Include="node_modules\mysql\License" />
+    <Content Include="node_modules\mysql\node_modules\bignumber.js\bignumber.js.map" />
+    <Content Include="node_modules\mysql\node_modules\bignumber.js\bower.json" />
+    <Content Include="node_modules\mysql\node_modules\bignumber.js\doc\API.html" />
+    <Content Include="node_modules\mysql\node_modules\bignumber.js\LICENCE" />
+    <Content Include="node_modules\mysql\node_modules\bignumber.js\package.json" />
+    <Content Include="node_modules\mysql\node_modules\bignumber.js\README.md" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\.npmignore" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\float.patch" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\LICENSE" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\node_modules\core-util-is\float.patch" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\node_modules\core-util-is\LICENSE" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\node_modules\core-util-is\package.json" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\node_modules\core-util-is\README.md" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\node_modules\isarray\component.json" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\node_modules\isarray\package.json" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\node_modules\isarray\README.md" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\node_modules\string_decoder\.npmignore" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\node_modules\string_decoder\LICENSE" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\node_modules\string_decoder\package.json" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\node_modules\string_decoder\README.md" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\package.json" />
+    <Content Include="node_modules\mysql\node_modules\readable-stream\README.md" />
+    <Content Include="node_modules\mysql\node_modules\sqlstring\HISTORY.md" />
+    <Content Include="node_modules\mysql\node_modules\sqlstring\LICENSE" />
+    <Content Include="node_modules\mysql\node_modules\sqlstring\package.json" />
+    <Content Include="node_modules\mysql\node_modules\sqlstring\README.md" />
+    <Content Include="node_modules\mysql\package.json" />
+    <Content Include="node_modules\mysql\Readme.md" />
     <Content Include="node_modules\nodemon\.jscsrc" />
     <Content Include="node_modules\nodemon\.jshintrc" />
     <Content Include="node_modules\nodemon\.npmignore" />
@@ -8281,7 +8387,12 @@
     <Content Include="node_modules\type-is\README.md" />
     <Content Include="package.json" />
     <Content Include="public\css\style.css" />
+    <Content Include="public\css\img\favicon.ico" />
+    <Content Include="public\css\img\mmmEmployeeLogo.png" />
     <Content Include="public\img\favicon.ico" />
+    <Content Include="public\img\idealogy.jpg" />
+    <Content Include="public\img\mEmployeeLogo.png" />
+    <Content Include="public\img\mEmployeeLogo2.png" />
     <Content Include="public\img\mmmEmployeeLogo.png" />
     <Content Include="public\json\emp-db.json" />
     <Content Include="public\json\emp-db.txt" />
@@ -8289,6 +8400,7 @@
     <Content Include="public\json\passwords.txt" />
     <Content Include="public\json\provinces.json" />
     <Content Include="public\json\userDynamo.txt" />
+    <Content Include="public\js\angular-route.min.js.map" />
     <Content Include="public\lib\angular-bootstrap\.bower.json" />
     <Content Include="public\lib\angular-bootstrap\.gitignore" />
     <Content Include="public\lib\angular-bootstrap\.npmignore" />
@@ -8442,7 +8554,7 @@
     <Content Include="views\index.html" />
     <Content Include="views\list.html" />
     <Content Include="views\main.html" />
-    <Content Include="views\print.html" />
+    <Content Include="views\login.html" />
     <Content Include="views\salaries.html" />
   </ItemGroup>
   <ItemGroup>
@@ -9296,6 +9408,8 @@
     <Folder Include="node_modules\depd\" />
     <Folder Include="node_modules\depd\lib\" />
     <Folder Include="node_modules\depd\lib\compat\" />
+    <Folder Include="node_modules\express-json\" />
+    <Folder Include="node_modules\express-json\lib\" />
     <Folder Include="node_modules\express\" />
     <Folder Include="node_modules\express\lib\" />
     <Folder Include="node_modules\express\lib\middleware\" />
@@ -9555,6 +9669,25 @@
     <Folder Include="node_modules\morgan\node_modules\" />
     <Folder Include="node_modules\morgan\node_modules\basic-auth\" />
     <Folder Include="node_modules\ms\" />
+    <Folder Include="node_modules\mysql\" />
+    <Folder Include="node_modules\mysql\lib\" />
+    <Folder Include="node_modules\mysql\lib\protocol\" />
+    <Folder Include="node_modules\mysql\lib\protocol\constants\" />
+    <Folder Include="node_modules\mysql\lib\protocol\packets\" />
+    <Folder Include="node_modules\mysql\lib\protocol\sequences\" />
+    <Folder Include="node_modules\mysql\node_modules\" />
+    <Folder Include="node_modules\mysql\node_modules\bignumber.js\" />
+    <Folder Include="node_modules\mysql\node_modules\bignumber.js\doc\" />
+    <Folder Include="node_modules\mysql\node_modules\readable-stream\" />
+    <Folder Include="node_modules\mysql\node_modules\readable-stream\lib\" />
+    <Folder Include="node_modules\mysql\node_modules\readable-stream\node_modules\" />
+    <Folder Include="node_modules\mysql\node_modules\readable-stream\node_modules\core-util-is\" />
+    <Folder Include="node_modules\mysql\node_modules\readable-stream\node_modules\core-util-is\lib\" />
+    <Folder Include="node_modules\mysql\node_modules\readable-stream\node_modules\isarray\" />
+    <Folder Include="node_modules\mysql\node_modules\readable-stream\node_modules\isarray\build\" />
+    <Folder Include="node_modules\mysql\node_modules\readable-stream\node_modules\string_decoder\" />
+    <Folder Include="node_modules\mysql\node_modules\sqlstring\" />
+    <Folder Include="node_modules\mysql\node_modules\sqlstring\lib\" />
     <Folder Include="node_modules\nodemon\" />
     <Folder Include="node_modules\nodemon\bin\" />
     <Folder Include="node_modules\nodemon\doc\" />
@@ -9907,8 +10040,10 @@
     <Folder Include="node_modules\type-is\" />
     <Folder Include="public\" />
     <Folder Include="public\css\" />
+    <Folder Include="public\css\img\" />
     <Folder Include="public\img\" />
     <Folder Include="public\json\" />
+    <Folder Include="public\css\img\js\" />
     <Folder Include="public\js\" />
     <Folder Include="public\lib\" />
     <Folder Include="public\lib\angular-bootstrap\" />
@@ -9951,7 +10086,7 @@
     <Folder Include="public\lib\jquery\src\traversing\var\" />
     <Folder Include="public\lib\jquery\src\var\" />
     <Folder Include="public\lib\underscore\" />
-    <Folder Include="public\routes\" />
+    <Folder Include="public\lib\routes\" />
     <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
     <Folder Include="typings\" />
